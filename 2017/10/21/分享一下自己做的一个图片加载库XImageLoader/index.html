@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Xu的博客">
 <meta property="og:description" content="这是一个我自己做的一个Android的自定义图片加载库，主要参考了网上一些大神写过的一些图片加载库，再结合自己的一些想法理解去做了一个较为完整的图片加载库。当然代码中也会存在一些不足的情况，例如代码架构方面不是非常的完善。希望大家提出意见，一起去改进！ 注意：这是一个用于学习图片加载与缓存的库，不推荐使用在实际项目之中！ Github地址：https://github.com/XuDevelope">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-04T15:01:24.607Z">
+<meta property="og:updated_time" content="2017-11-05T03:14:18.385Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分享一下自己做的一个图片加载库XImageLoader">
 <meta name="twitter:description" content="这是一个我自己做的一个Android的自定义图片加载库，主要参考了网上一些大神写过的一些图片加载库，再结合自己的一些想法理解去做了一个较为完整的图片加载库。当然代码中也会存在一些不足的情况，例如代码架构方面不是非常的完善。希望大家提出意见，一起去改进！ 注意：这是一个用于学习图片加载与缓存的库，不推荐使用在实际项目之中！ Github地址：https://github.com/XuDevelope">
@@ -304,6 +304,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
 
           
 
@@ -325,6 +330,7 @@
         <p>这是一个我自己做的一个Android的自定义图片加载库，主要参考了网上一些大神写过的一些图片加载库，再结合自己的一些想法理解去做了一个较为完整的图片加载库。当然代码中也会存在一些不足的情况，例如代码架构方面不是非常的完善。希望大家提出意见，一起去改进！</p>
 <p>注意：这是一个用于学习图片加载与缓存的库，不推荐使用在实际项目之中！</p>
 <p>Github地址：<a href="https://github.com/XuDeveloper/XImageLoader" target="_blank" rel="external">https://github.com/XuDeveloper/XImageLoader</a></p>
+<a id="more"></a>
 <p>如果你想改进这个图片加载库，欢迎在GitHub上fork这个项目然后pull request给我！如果你喜欢它，请给这个项目一个star或者关注我的GitHub！谢谢你们的支持！</p>
 <h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><h4 id="Android-Studio"><a href="#Android-Studio" class="headerlink" title="Android Studio"></a>Android Studio</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">allprojects &#123;</div><div class="line">repositories &#123;</div><div class="line">	...</div><div class="line">	maven &#123; url "https://jitpack.io" &#125;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">   compile 'com.github.XuDeveloper:XImageLoader:v1.0'</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="Eclipse"><a href="#Eclipse" class="headerlink" title="Eclipse"></a>Eclipse</h4><blockquote>
@@ -523,7 +529,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#导入"><span class="nav-number">1.</span> <span class="nav-text">导入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Android-Studio"><span class="nav-number">1.1.</span> <span class="nav-text">Android Studio</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Eclipse"><span class="nav-number">1.2.</span> <span class="nav-text">Eclipse</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#导入"><span class="nav-text">导入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Android-Studio"><span class="nav-text">Android Studio</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Eclipse"><span class="nav-text">Eclipse</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-text">使用</span></a></li></ol></div>
             
 
           </div>
@@ -557,16 +563,24 @@
 
 
 
-  <span class="post-meta-divider">|</span>
+  
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
 
 
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
 
 
 

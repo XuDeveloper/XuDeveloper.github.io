@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="一：View动画简介：View动画通过对场景里的对象不断做图像变换（平移、缩放、旋转、透明度）从而产生动画效果，是一种渐近式动画，并且View动画支持自定义。1.View动画主要分为四类：TranslateAnimation，ScaleAnimation，RotateAnimation，AlphaAnimation，可通过XML或者Java代码声明使用，动画XML文件需要放在res/anim/fi">
+<meta name="description" content="一：View动画简介：View动画通过对场景里的对象不断做图像变换（平移、缩放、旋转、透明度）从而产生动画效果，是一种渐近式动画，并且View动画支持自定义。">
 <meta name="keywords" content="Android知识点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android View动画和属性动画简单解析">
 <meta property="og:url" content="http://yoursite.com/2017/10/21/Android View动画和属性动画简单解析/index.html">
 <meta property="og:site_name" content="Xu的博客">
-<meta property="og:description" content="一：View动画简介：View动画通过对场景里的对象不断做图像变换（平移、缩放、旋转、透明度）从而产生动画效果，是一种渐近式动画，并且View动画支持自定义。1.View动画主要分为四类：TranslateAnimation，ScaleAnimation，RotateAnimation，AlphaAnimation，可通过XML或者Java代码声明使用，动画XML文件需要放在res/anim/fi">
+<meta property="og:description" content="一：View动画简介：View动画通过对场景里的对象不断做图像变换（平移、缩放、旋转、透明度）从而产生动画效果，是一种渐近式动画，并且View动画支持自定义。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-21T07:06:09.086Z">
+<meta property="og:updated_time" content="2017-11-05T03:14:17.122Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android View动画和属性动画简单解析">
-<meta name="twitter:description" content="一：View动画简介：View动画通过对场景里的对象不断做图像变换（平移、缩放、旋转、透明度）从而产生动画效果，是一种渐近式动画，并且View动画支持自定义。1.View动画主要分为四类：TranslateAnimation，ScaleAnimation，RotateAnimation，AlphaAnimation，可通过XML或者Java代码声明使用，动画XML文件需要放在res/anim/fi">
+<meta name="twitter:description" content="一：View动画简介：View动画通过对场景里的对象不断做图像变换（平移、缩放、旋转、透明度）从而产生动画效果，是一种渐近式动画，并且View动画支持自定义。">
 
 
 
@@ -304,6 +304,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
 
           
 
@@ -322,7 +327,9 @@
       
 
       
-        <h4 id="一：View动画"><a href="#一：View动画" class="headerlink" title="一：View动画"></a>一：View动画</h4><p>简介：View动画通过对场景里的对象不断做图像变换（平移、缩放、旋转、透明度）从而产生动画效果，是一种渐近式动画，并且View动画支持自定义。<br>1.View动画主要分为四类：TranslateAnimation，ScaleAnimation，RotateAnimation，AlphaAnimation，可通过XML或者Java代码声明使用，动画XML文件需要放在res/anim/filename.xml中。<br>例子：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">xmlns:android</span>=<span class="string">"[http://schemas.android.com/apk/res/android](http://schemas.android.com/apk/res/android)"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:interpolator</span>=<span class="string">""</span></span></div><div class="line"><span class="tag">    <span class="attr">android:shareInterpolator</span>=<span class="string">"["</span><span class="attr">true</span>" | "<span class="attr">false</span>"] &gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">alpha</span></span></div><div class="line"><span class="tag">        <span class="attr">android:fromAlpha</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:toAlpha</span>=<span class="string">"float"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">scale</span></span></div><div class="line"><span class="tag">        <span class="attr">android:fromXScale</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:toXScale</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:fromYScale</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:toYScale</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:pivotX</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:pivotY</span>=<span class="string">"float"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">translate</span> </span></div><div class="line"><span class="tag">        <span class="attr">android:fromXDelta</span>=<span class="string">"float"</span> </span></div><div class="line"><span class="tag">        <span class="attr">android:toXDelta</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:fromYDelta</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:toYDelta</span>=<span class="string">"float"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">rotate</span> </span></div><div class="line"><span class="tag">        <span class="attr">android:fromDegrees</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:toDegrees</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:pivotX</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:pivotY</span>=<span class="string">"float"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div></pre></td></tr></table></figure></p>
+        <h4 id="一：View动画"><a href="#一：View动画" class="headerlink" title="一：View动画"></a>一：View动画</h4><p>简介：View动画通过对场景里的对象不断做图像变换（平移、缩放、旋转、透明度）从而产生动画效果，是一种渐近式动画，并且View动画支持自定义。</p>
+<a id="more"></a>
+<p>1.View动画主要分为四类：TranslateAnimation，ScaleAnimation，RotateAnimation，AlphaAnimation，可通过XML或者Java代码声明使用，动画XML文件需要放在res/anim/filename.xml中。<br>例子：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">xmlns:android</span>=<span class="string">"[http://schemas.android.com/apk/res/android](http://schemas.android.com/apk/res/android)"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:interpolator</span>=<span class="string">""</span></span></div><div class="line"><span class="tag">    <span class="attr">android:shareInterpolator</span>=<span class="string">"["</span><span class="attr">true</span>" | "<span class="attr">false</span>"] &gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">alpha</span></span></div><div class="line"><span class="tag">        <span class="attr">android:fromAlpha</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:toAlpha</span>=<span class="string">"float"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">scale</span></span></div><div class="line"><span class="tag">        <span class="attr">android:fromXScale</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:toXScale</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:fromYScale</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:toYScale</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:pivotX</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:pivotY</span>=<span class="string">"float"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">translate</span> </span></div><div class="line"><span class="tag">        <span class="attr">android:fromXDelta</span>=<span class="string">"float"</span> </span></div><div class="line"><span class="tag">        <span class="attr">android:toXDelta</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:fromYDelta</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:toYDelta</span>=<span class="string">"float"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">rotate</span> </span></div><div class="line"><span class="tag">        <span class="attr">android:fromDegrees</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:toDegrees</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:pivotX</span>=<span class="string">"float"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:pivotY</span>=<span class="string">"float"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>Java代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用Java代码加载XML动画</span></div><div class="line">Animation animation = AnimationUtils.loadAnimation(<span class="keyword">this</span>, R.anim.animation_test);</div><div class="line">mButton.startAnimation(animation);</div><div class="line"><span class="comment">// 使用Java代码创建动画</span></div><div class="line">AlphaAnimation alphaAnimation = <span class="keyword">new</span> AlphaAnimation(<span class="number">0</span>, <span class="number">1</span>);</div></pre></td></tr></table></figure></p>
 <p>2.View动画既可以是单个动画，也可以由一系列动画组成。<br>3.几个标签解读：<br>set：<br>表示动画集合，对应AnimationSet类，它可以包含若干个动画，并且它的内部也是可以嵌套其他动画集合的。<br>android:interpolator：<br>表示动画集合所采用的插值器，什么是插值器呢？它影响动画的速度，比如非匀速动画就需要通过插值器来控制动画的播放过程。属性可不指定，默认为@android:anim/accelerate_decelerate_interpolator，即加速减速插值器。<br>android:shareInterpolator：<br>表示集合中的动画是否和集合共享同一个插值器。如果集合不指定插值器，那么子动画就需要单独指定所需的插值器或者使用默认值。<br>其余的属性网上都能查到，这里就不详细描述了。</p>
 <h4 id="二：属性动画"><a href="#二：属性动画" class="headerlink" title="二：属性动画"></a>二：属性动画</h4><p>简介：属性动画通过动态地改变相关对象的属性，比如长宽等，从而实现动画效果，属性动画为API 11（Android 3.0）以上的新特性，在低版本无法直接使用属性动画，但仍然可通过兼容库（NineOldAndroids）去使用。<br>属性动画有ValueAnimator、ObjectAnimator和AnimatorSet等概念。其中ObjectAnimator继承自ValueAnimator、AnimatorSet是动画集合，可以定义一组动画。<br>（1）使用<br>举例：改变一个对象（myObject）的translationY属性，让其沿着Y轴上平移一段距离：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ObjectAnimator.ofFloat(myObject, <span class="string">"translationY"</span>, -myObject.getHeight()).start();</div></pre></td></tr></table></figure></p>
@@ -510,7 +517,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一：View动画"><span class="nav-number">1.</span> <span class="nav-text">一：View动画</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二：属性动画"><span class="nav-number">2.</span> <span class="nav-text">二：属性动画</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一：View动画"><span class="nav-text">一：View动画</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二：属性动画"><span class="nav-text">二：属性动画</span></a></li></ol></div>
             
 
           </div>
@@ -544,16 +551,24 @@
 
 
 
-  <span class="post-meta-divider">|</span>
+  
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
 
 
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
 
 
 
