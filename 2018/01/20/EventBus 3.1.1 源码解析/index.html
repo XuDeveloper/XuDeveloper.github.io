@@ -135,7 +135,7 @@
 <meta property="og:description" content="一、本文需要解决的问题我研究EventBus源码的目的是解决以下几个我在使用过程中所思考的问题：  这个框架涉及到一种设计模式叫做观察者模式，什么是观察者模式？ 事件如何进行定义，有没有相关限制？ 观察者绑定观察事件的时候，绑定方法的命名有限制吗？ 事件发送和接收的原理？">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1963233-58fa867fd7239615.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
-<meta property="og:updated_time" content="2018-01-20T15:48:10.589Z">
+<meta property="og:updated_time" content="2018-01-26T16:18:05.073Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EventBus 3.1.1 源码解析">
 <meta name="twitter:description" content="一、本文需要解决的问题我研究EventBus源码的目的是解决以下几个我在使用过程中所思考的问题：  这个框架涉及到一种设计模式叫做观察者模式，什么是观察者模式？ 事件如何进行定义，有没有相关限制？ 观察者绑定观察事件的时候，绑定方法的命名有限制吗？ 事件发送和接收的原理？">
@@ -497,7 +497,6 @@
 </ul>
 <p>补充：BACKGROUND和ASYNC有什么区别呢？<br>BACKGROUND中的任务是一个接着一个的去调用，而ASYNC则会即时异步运行，具体的可以对比AsyncPoster.java和BackgroundPoster.java两者代码实现的区别。</p>
 <p>到这里，我们就解决了第四个问题，<strong>事件的发送和接收，主要是通过subscriptionsByEventType这个非常重要的列表，我们将订阅即接收事件的方法存储在这个列表，发布事件的时候在列表中查询出相对应的方法并执行~</strong></p>
-<p>这篇文章会同步到我的<a href="https://xudeveloper.github.io/" target="_blank" rel="external">个人日志</a>，如有问题，请大家踊跃提出，谢谢大家！</p>
 
       
     </div>
