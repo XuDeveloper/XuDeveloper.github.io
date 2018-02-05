@@ -126,19 +126,19 @@
 
 
 
-<meta name="description" content="一、本文需要解决的问题我研究EventBus源码的目的是解决以下几个我在使用过程中所思考的问题：  这个框架涉及到一种设计模式叫做观察者模式，什么是观察者模式？ 事件如何进行定义，有没有相关限制？ 观察者绑定观察事件的时候，绑定方法的命名有限制吗？ 事件发送和接收的原理？">
+<meta name="description" content="* 本篇文章已授权微信公众号 guolin_blog（郭霖）独家发布一、本文需要解决的问题我研究EventBus源码的目的是解决以下几个我在使用过程中所思考的问题：  这个框架涉及到一种设计模式叫做观察者模式，什么是观察者模式？ 事件如何进行定义，有没有相关限制？ 观察者绑定观察事件的时候，绑定方法的命名有限制吗？ 事件发送和接收的原理？">
 <meta name="keywords" content="Android源码解析">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EventBus 3.1.1 源码解析">
 <meta property="og:url" content="http://yoursite.com/2018/01/20/EventBus 3.1.1 源码解析/index.html">
 <meta property="og:site_name" content="Xu的博客">
-<meta property="og:description" content="一、本文需要解决的问题我研究EventBus源码的目的是解决以下几个我在使用过程中所思考的问题：  这个框架涉及到一种设计模式叫做观察者模式，什么是观察者模式？ 事件如何进行定义，有没有相关限制？ 观察者绑定观察事件的时候，绑定方法的命名有限制吗？ 事件发送和接收的原理？">
+<meta property="og:description" content="* 本篇文章已授权微信公众号 guolin_blog（郭霖）独家发布一、本文需要解决的问题我研究EventBus源码的目的是解决以下几个我在使用过程中所思考的问题：  这个框架涉及到一种设计模式叫做观察者模式，什么是观察者模式？ 事件如何进行定义，有没有相关限制？ 观察者绑定观察事件的时候，绑定方法的命名有限制吗？ 事件发送和接收的原理？">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1963233-58fa867fd7239615.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
-<meta property="og:updated_time" content="2018-01-26T16:18:05.073Z">
+<meta property="og:updated_time" content="2018-02-05T13:40:32.947Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EventBus 3.1.1 源码解析">
-<meta name="twitter:description" content="一、本文需要解决的问题我研究EventBus源码的目的是解决以下几个我在使用过程中所思考的问题：  这个框架涉及到一种设计模式叫做观察者模式，什么是观察者模式？ 事件如何进行定义，有没有相关限制？ 观察者绑定观察事件的时候，绑定方法的命名有限制吗？ 事件发送和接收的原理？">
+<meta name="twitter:description" content="* 本篇文章已授权微信公众号 guolin_blog（郭霖）独家发布一、本文需要解决的问题我研究EventBus源码的目的是解决以下几个我在使用过程中所思考的问题：  这个框架涉及到一种设计模式叫做观察者模式，什么是观察者模式？ 事件如何进行定义，有没有相关限制？ 观察者绑定观察事件的时候，绑定方法的命名有限制吗？ 事件发送和接收的原理？">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1963233-58fa867fd7239615.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
 
 
@@ -402,7 +402,7 @@
       
 
       
-        <h4 id="一、本文需要解决的问题"><a href="#一、本文需要解决的问题" class="headerlink" title="一、本文需要解决的问题"></a>一、本文需要解决的问题</h4><p>我研究EventBus源码的目的是解决以下几个我在使用过程中所思考的问题：</p>
+        <h5 id="本篇文章已授权微信公众号-guolin-blog（郭霖）独家发布"><a href="#本篇文章已授权微信公众号-guolin-blog（郭霖）独家发布" class="headerlink" title="* 本篇文章已授权微信公众号 guolin_blog（郭霖）独家发布"></a>* 本篇文章已授权微信公众号 guolin_blog（郭霖）独家发布</h5><h4 id="一、本文需要解决的问题"><a href="#一、本文需要解决的问题" class="headerlink" title="一、本文需要解决的问题"></a>一、本文需要解决的问题</h4><p>我研究EventBus源码的目的是解决以下几个我在使用过程中所思考的问题：</p>
 <ol>
 <li>这个框架涉及到一种设计模式叫做观察者模式，什么是观察者模式？</li>
 <li>事件如何进行定义，有没有相关限制？</li>
@@ -689,7 +689,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、本文需要解决的问题"><span class="nav-text">一、本文需要解决的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、初步使用"><span class="nav-text">二、初步使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义事件"><span class="nav-text">定义事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#主Activity"><span class="nav-text">主Activity</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#运行效果"><span class="nav-text">运行效果</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、源码分析"><span class="nav-text">三、源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#关于观察者模式"><span class="nav-text">关于观察者模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关于事件"><span class="nav-text">关于事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#具体分析"><span class="nav-text">具体分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#什么是sticky-event？"><span class="nav-text">什么是sticky event？</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#本篇文章已授权微信公众号-guolin-blog（郭霖）独家发布"><span class="nav-text">* 本篇文章已授权微信公众号 guolin_blog（郭霖）独家发布</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一、本文需要解决的问题"><span class="nav-text">一、本文需要解决的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、初步使用"><span class="nav-text">二、初步使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义事件"><span class="nav-text">定义事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#主Activity"><span class="nav-text">主Activity</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#运行效果"><span class="nav-text">运行效果</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、源码分析"><span class="nav-text">三、源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#关于观察者模式"><span class="nav-text">关于观察者模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关于事件"><span class="nav-text">关于事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#具体分析"><span class="nav-text">具体分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#什么是sticky-event？"><span class="nav-text">什么是sticky event？</span></a></li></ol></div>
             
 
           </div>
