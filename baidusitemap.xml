@@ -1,212 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-
-    
   <url>
-    <loc>https://xudeveloper.github.io/posts/e8b85950.html</loc>
+    <loc>http://dev-xu.cn/posts/e8b85950.html</loc>
     <lastmod>2018-09-16T07:42:37.346Z</lastmod>
-    <data>
-        <display>
-        <title>使用Kotlin的一些心得体会以及部分语法解析</title>
-        <pubTime>2018-09-16T07:10:52.000Z</pubTime>
-        
-        <tag>Android实践</tag>
-         
-        <tag>Kotlin</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="https://xudeveloper.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://xudeveloper.github.io/posts/e51028a3.html</loc>
+  </url>  <url>
+    <loc>http://dev-xu.cn/posts/e51028a3.html</loc>
     <lastmod>2018-08-18T03:40:41.131Z</lastmod>
-    <data>
-        <display>
-        <title>分享一下自己做的一个图片加载库XImageLoader</title>
-        <pubTime>2017-10-21T07:10:23.000Z</pubTime>
-        
-        <tag>Android实践</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="https://xudeveloper.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://xudeveloper.github.io/posts/a0194f59.html</loc>
+  </url>  <url>
+    <loc>http://dev-xu.cn/posts/a0194f59.html</loc>
     <lastmod>2018-08-18T03:40:41.130Z</lastmod>
-    <data>
-        <display>
-        <title>易用版Popupwindow by Kotlin了解一下</title>
-        <pubTime>2018-08-08T13:07:23.000Z</pubTime>
-        
-        <tag>Android实践</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="https://xudeveloper.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://xudeveloper.github.io/posts/5ce963fb.html</loc>
+  </url>  <url>
+    <loc>http://dev-xu.cn/posts/5ce963fb.html</loc>
     <lastmod>2018-08-18T03:40:41.129Z</lastmod>
-    <data>
-        <display>
-        <title>Butterknife 8.8.1源码解析</title>
-        <pubTime>2017-12-17T10:40:23.000Z</pubTime>
-        
-        <tag>Android源码解析</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="https://xudeveloper.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://xudeveloper.github.io/posts/1a3301f8.html</loc>
+  </url>  <url>
+    <loc>http://dev-xu.cn/posts/1a3301f8.html</loc>
     <lastmod>2018-08-18T03:40:41.128Z</lastmod>
-    <data>
-        <display>
-        <title>EventBus 3.1.1 源码解析</title>
-        <pubTime>2018-01-20T09:10:23.000Z</pubTime>
-        
-        <tag>Android源码解析</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="https://xudeveloper.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://xudeveloper.github.io/posts/8cda8bbd.html</loc>
+  </url>  <url>
+    <loc>http://dev-xu.cn/posts/8cda8bbd.html</loc>
     <lastmod>2018-08-18T03:40:41.127Z</lastmod>
-    <data>
-        <display>
-        <title>Android Handler机制理解</title>
-        <pubTime>2017-10-21T06:51:23.000Z</pubTime>
-        
-        <tag>Android知识点</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="https://xudeveloper.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://xudeveloper.github.io/posts/e774643a.html</loc>
+  </url>  <url>
+    <loc>http://dev-xu.cn/posts/e774643a.html</loc>
     <lastmod>2018-08-18T03:40:41.126Z</lastmod>
-    <data>
-        <display>
-        <title>Android adb命令的一些实际运用</title>
-        <pubTime>2017-11-04T15:10:52.000Z</pubTime>
-        
-        <tag>Android实践</tag>
-         
-        <tag>Python</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="https://xudeveloper.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://xudeveloper.github.io/posts/3435cf36.html</loc>
+  </url>  <url>
+    <loc>http://dev-xu.cn/posts/3435cf36.html</loc>
     <lastmod>2018-08-18T03:40:41.125Z</lastmod>
-    <data>
-        <display>
-        <title>Android AccessibilityService机制源码解析</title>
-        <pubTime>2018-06-18T09:10:23.000Z</pubTime>
-        
-        <tag>Android源码解析</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="https://xudeveloper.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://xudeveloper.github.io/posts/348ce477.html</loc>
+  </url>  <url>
+    <loc>http://dev-xu.cn/posts/348ce477.html</loc>
     <lastmod>2018-08-18T03:40:41.123Z</lastmod>
-    <data>
-        <display>
-        <title>Android View动画和属性动画简单解析</title>
-        <pubTime>2017-10-21T06:58:23.000Z</pubTime>
-        
-        <tag>Android知识点</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="https://xudeveloper.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://xudeveloper.github.io/posts/b3e682b8.html</loc>
+  </url>  <url>
+    <loc>http://dev-xu.cn/posts/b3e682b8.html</loc>
     <lastmod>2018-08-18T03:40:41.120Z</lastmod>
-    <data>
-        <display>
-        <title>Android 7.0 startActivity()源码解析以及对几个问题的思考</title>
-        <pubTime>2017-12-05T15:00:23.000Z</pubTime>
-        
-        <tag>Android源码解析</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="https://xudeveloper.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-    
-    
+  </url>
 </urlset>
