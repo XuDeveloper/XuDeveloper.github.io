@@ -203,6 +203,7 @@ mHandler.post(new Runnable()  {
     }
 });
 ```
+
 其实这个Runnable并没有创建什么线程，而是发送了一条消息：
 
 ```java 
