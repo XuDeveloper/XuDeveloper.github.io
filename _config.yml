@@ -95,6 +95,10 @@ deploy:
 - type: git
   repo: git@github.com:XuDeveloper/XuDeveloper.github.io.git
   branch: master
+
+- type: git
+  repo: git@git.dev.tencent.com:dev_xu/dev_xu.git
+  branch: master
   
 - type: baidu_url_submitter
 

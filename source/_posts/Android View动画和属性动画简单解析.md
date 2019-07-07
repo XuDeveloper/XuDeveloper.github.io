@@ -3,7 +3,7 @@ title: Android View动画和属性动画简单解析
 tags: Android知识点
 categories: Android
 abbrlink: 348ce477
-date: 2017-10-21 14:58:23
+date: 2017-10-22 14:58:23
 ---
 
 #### 一、View动画
