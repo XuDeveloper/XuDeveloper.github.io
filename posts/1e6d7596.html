@@ -126,20 +126,20 @@
 
 
 
-<meta name="description" content="本文预计阅读时间为15-20分钟Android 测试简介对于大多数 Android 商业项目，基本都是处于高速迭代的开发阶段，这个阶段不仅仅是对项目的开发效率，也对项目的产品质量提出了更高的要求。">
+<meta name="description" content="* 本篇文章已授权微信公众号 guolin_blog（郭霖）独家发布本文预计阅读时间为15-20分钟Android 测试简介对于大多数 Android 商业项目，基本都是处于高速迭代的开发阶段，这个阶段不仅仅是对项目的开发效率，也对项目的产品质量提出了更高的要求。">
 <meta name="keywords" content="Android实践">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 单元测试和 UI 测试初步实践">
 <meta property="og:url" content="https://dev-xu.cn/posts/1e6d7596.html">
 <meta property="og:site_name" content="Xu的博客">
-<meta property="og:description" content="本文预计阅读时间为15-20分钟Android 测试简介对于大多数 Android 商业项目，基本都是处于高速迭代的开发阶段，这个阶段不仅仅是对项目的开发效率，也对项目的产品质量提出了更高的要求。">
+<meta property="og:description" content="* 本篇文章已授权微信公众号 guolin_blog（郭霖）独家发布本文预计阅读时间为15-20分钟Android 测试简介对于大多数 Android 商业项目，基本都是处于高速迭代的开发阶段，这个阶段不仅仅是对项目的开发效率，也对项目的产品质量提出了更高的要求。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://xu-1254434063.cos.ap-guangzhou.myqcloud.com/pic/0630blogimg1.png">
 <meta property="og:image" content="https://xu-1254434063.cos.ap-guangzhou.myqcloud.com/pic/0630blogimg2.png">
-<meta property="og:updated_time" content="2019-07-07T09:06:46.614Z">
+<meta property="og:updated_time" content="2019-07-16T13:36:46.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 单元测试和 UI 测试初步实践">
-<meta name="twitter:description" content="本文预计阅读时间为15-20分钟Android 测试简介对于大多数 Android 商业项目，基本都是处于高速迭代的开发阶段，这个阶段不仅仅是对项目的开发效率，也对项目的产品质量提出了更高的要求。">
+<meta name="twitter:description" content="* 本篇文章已授权微信公众号 guolin_blog（郭霖）独家发布本文预计阅读时间为15-20分钟Android 测试简介对于大多数 Android 商业项目，基本都是处于高速迭代的开发阶段，这个阶段不仅仅是对项目的开发效率，也对项目的产品质量提出了更高的要求。">
 <meta name="twitter:image" content="https://xu-1254434063.cos.ap-guangzhou.myqcloud.com/pic/0630blogimg1.png">
 
 
@@ -403,7 +403,7 @@
       
 
       
-        <h4 id="本文预计阅读时间为15-20分钟"><a href="#本文预计阅读时间为15-20分钟" class="headerlink" title="本文预计阅读时间为15-20分钟"></a><strong>本文预计阅读时间为15-20分钟</strong></h4><h3 id="Android-测试简介"><a href="#Android-测试简介" class="headerlink" title="Android 测试简介"></a>Android 测试简介</h3><p>对于大多数 Android 商业项目，基本都是处于高速迭代的开发阶段，这个阶段不仅仅是对项目的开发效率，也对项目的产品质量提出了更高的要求。</p>
+        <h5 id="本篇文章已授权微信公众号-guolin-blog（郭霖）独家发布"><a href="#本篇文章已授权微信公众号-guolin-blog（郭霖）独家发布" class="headerlink" title="* 本篇文章已授权微信公众号 guolin_blog（郭霖）独家发布"></a>* 本篇文章已授权微信公众号 guolin_blog（郭霖）独家发布</h5><h4 id="本文预计阅读时间为15-20分钟"><a href="#本文预计阅读时间为15-20分钟" class="headerlink" title="本文预计阅读时间为15-20分钟"></a><strong>本文预计阅读时间为15-20分钟</strong></h4><h3 id="Android-测试简介"><a href="#Android-测试简介" class="headerlink" title="Android 测试简介"></a>Android 测试简介</h3><p>对于大多数 Android 商业项目，基本都是处于高速迭代的开发阶段，这个阶段不仅仅是对项目的开发效率，也对项目的产品质量提出了更高的要求。</p>
 <a id="more"></a>
 <p>通常大型项目都是通过黑盒测试等方式来提供质量相关的保障，但同时笔者认为也需要 Android 端的单元测试以及能自动在 Android 平台上运行的 UI 测试，这几种测试有以下几个优势：</p>
 <ul>
@@ -712,7 +712,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#本文预计阅读时间为15-20分钟"><span class="nav-text">本文预计阅读时间为15-20分钟</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-测试简介"><span class="nav-text">Android 测试简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-测试代码位置"><span class="nav-text">Android 测试代码位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-单元测试实践"><span class="nav-text">Android 单元测试实践</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建新用例"><span class="nav-text">创建新用例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#增加依赖库"><span class="nav-text">增加依赖库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编写测试代码"><span class="nav-text">编写测试代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-UI-测试实践"><span class="nav-text">Android UI 测试实践</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建新用例-1"><span class="nav-text">创建新用例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#增加依赖库-1"><span class="nav-text">增加依赖库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编写测试代码-1"><span class="nav-text">编写测试代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#本篇文章已授权微信公众号-guolin-blog（郭霖）独家发布"><span class="nav-text">* 本篇文章已授权微信公众号 guolin_blog（郭霖）独家发布</span></a></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#本文预计阅读时间为15-20分钟"><span class="nav-text">本文预计阅读时间为15-20分钟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-测试简介"><span class="nav-text">Android 测试简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-测试代码位置"><span class="nav-text">Android 测试代码位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-单元测试实践"><span class="nav-text">Android 单元测试实践</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建新用例"><span class="nav-text">创建新用例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#增加依赖库"><span class="nav-text">增加依赖库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编写测试代码"><span class="nav-text">编写测试代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-UI-测试实践"><span class="nav-text">Android UI 测试实践</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建新用例-1"><span class="nav-text">创建新用例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#增加依赖库-1"><span class="nav-text">增加依赖库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编写测试代码-1"><span class="nav-text">编写测试代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></div>
             
 
           </div>
