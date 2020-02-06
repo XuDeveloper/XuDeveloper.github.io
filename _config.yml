@@ -81,7 +81,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: hexo-theme-next
 
 baidu_url_submit:
   count: 20 ## 比如3，代表提交最新的三个链接
