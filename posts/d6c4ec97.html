@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="https://fonts.cat.net/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+
+
+  <meta name="keywords" content="Android源码解析,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本文预计阅读时间为 15-20 分钟一、Kotlin-Android-Extensions 简介Kotlin 从首次推出到现在，可谓发展的十分迅速，独特的空安全特性吸引了很多 Android 开发者去使用，Google 也正式将 Kotlin 这门语言作为 Android 开发的首选语言。Kotlin 官方也为各位开发者提供了一系列的插件，开发文档以及 IDE 支持，本文介绍的 Kotlin-An">
+<meta name="keywords" content="Android源码解析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin-Android-Extensions 库使用及源码解析">
+<meta property="og:url" content="https://dev-xu.cn/posts/d6c4ec97.html">
+<meta property="og:site_name" content="Xu的博客">
+<meta property="og:description" content="本文预计阅读时间为 15-20 分钟一、Kotlin-Android-Extensions 简介Kotlin 从首次推出到现在，可谓发展的十分迅速，独特的空安全特性吸引了很多 Android 开发者去使用，Google 也正式将 Kotlin 这门语言作为 Android 开发的首选语言。Kotlin 官方也为各位开发者提供了一系列的插件，开发文档以及 IDE 支持，本文介绍的 Kotlin-An">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-02-14T14:02:51.338Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin-Android-Extensions 库使用及源码解析">
+<meta name="twitter:description" content="本文预计阅读时间为 15-20 分钟一、Kotlin-Android-Extensions 简介Kotlin 从首次推出到现在，可谓发展的十分迅速，独特的空安全特性吸引了很多 Android 开发者去使用，Google 也正式将 Kotlin 这门语言作为 Android 开发的首选语言。Kotlin 官方也为各位开发者提供了一系列的插件，开发文档以及 IDE 支持，本文介绍的 Kotlin-An">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://dev-xu.cn/posts/d6c4ec97.html">
+
+
+
+
+
+  <title>Kotlin-Android-Extensions 库使用及源码解析 | Xu的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xu的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dev-xu.cn/posts/d6c4ec97.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xu的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Kotlin-Android-Extensions 库使用及源码解析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-06T21:10:23+08:00">
+                2020-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/posts/d6c4ec97.html" class="leancloud_visitors" data-flag-title="Kotlin-Android-Extensions 库使用及源码解析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="本文预计阅读时间为-15-20-分钟"><a href="#本文预计阅读时间为-15-20-分钟" class="headerlink" title="本文预计阅读时间为 15-20 分钟"></a><strong>本文预计阅读时间为 15-20 分钟</strong></h4><h3 id="一、Kotlin-Android-Extensions-简介"><a href="#一、Kotlin-Android-Extensions-简介" class="headerlink" title="一、Kotlin-Android-Extensions 简介"></a>一、Kotlin-Android-Extensions 简介</h3><p>Kotlin 从首次推出到现在，可谓发展的十分迅速，独特的空安全特性吸引了很多 Android 开发者去使用，Google 也正式将 Kotlin 这门语言作为 Android 开发的首选语言。Kotlin 官方也为各位开发者提供了一系列的插件，开发文档以及 IDE 支持，本文介绍的 Kotlin-Android-Extensions 就是一款 Kotlin 的安卓开发扩展插件。</p>
+<a id="more"></a>
+<h3 id="二、Kotlin-Android-Extensions-使用"><a href="#二、Kotlin-Android-Extensions-使用" class="headerlink" title="二、Kotlin-Android-Extensions 使用"></a>二、Kotlin-Android-Extensions 使用</h3><h4 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h4><p>直接在 build.gradle 中引入该插件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;kotlin-android-extensions&apos;</span><br></pre></td></tr></table></figure>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>模拟的业务场景如下：</p>
+<ul>
+<li>在 activity_main.xml 中创建一个 id 为 button_test 的 button</li>
+<li>在 MainActivity.kt 中为这个 button 设置点击事件</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.os.Bundle</span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity</span><br><span class="line"><span class="keyword">import</span> kotlinx.android.synthetic.main.activity_main.*</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Xu on 2020/02/05.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Xu</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span>: <span class="type">AppCompatActivity</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        setContentView(R.layout.activity_main)</span><br><span class="line">        </span><br><span class="line">        button_test.setOnClickListener &#123; </span><br><span class="line">            <span class="comment">// todo</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里可以观察到，并没有熟悉的 findViewById() 方法，而是直接使用了 button_test 这个对象，该对象其实是由插件根据布局 xml 中所设置的控件 id 而自动生成的。</p>
+<h3 id="三、Kotlin-Android-Extensions-源码分析"><a href="#三、Kotlin-Android-Extensions-源码分析" class="headerlink" title="三、Kotlin-Android-Extensions 源码分析"></a>三、Kotlin-Android-Extensions 源码分析</h3><p>为什么不需要使用到 findViewById() 方法呢？之前我在分析 ButterKnife 源码的时候也问过类似的问题（<a href="https://juejin.im/post/5a36412f6fb9a0451d418e2f" target="_blank" rel="noopener">传送门</a>），最后其实是通过 APT（编译时注解）的方式自动生成了 findViewById 方法，猜测这里也是通过类似的自动生成代码方式帮我们补充了。</p>
+<p>我们首先试着去反编译 Kotlin ByteCode，具体是通过打开 Android Studio -&gt; Tools -&gt; Kotlin -&gt; Show Kotlin Bytecode，然后选择 build 文件夹下的 MainActivity.class，点击 Decompile 即可。反编译完代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">   <span class="keyword">private</span> HashMap _$_findViewCache;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">      <span class="keyword">this</span>.setContentView(layout.activity_main);</span><br><span class="line">      ((Button)<span class="keyword">this</span>._$_findCachedViewById(id.button_test)).setOnClickListener((OnClickListener)<span class="keyword">null</span>.INSTANCE);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> View _$_findCachedViewById(<span class="keyword">int</span> var1) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>._$_findViewCache == <span class="keyword">null</span>) &#123;</span><br><span class="line">         <span class="keyword">this</span>._$_findViewCache = <span class="keyword">new</span> HashMap();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      View var2 = (View)<span class="keyword">this</span>._$_findViewCache.get(var1);</span><br><span class="line">      <span class="keyword">if</span> (var2 == <span class="keyword">null</span>) &#123;</span><br><span class="line">         var2 = <span class="keyword">this</span>.findViewById(var1);</span><br><span class="line">         <span class="keyword">this</span>._$_findViewCache.put(var1, var2);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> var2;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> _$_clearFindViewByIdCache() &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>._$_findViewCache != <span class="keyword">null</span>) &#123;</span><br><span class="line">         <span class="keyword">this</span>._$_findViewCache.clear();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里会发现多了一个 _\$_findViewCache 的成员变量以及 _\$_findCachedViewById 的方法，而这个方法内部其实也是使用到了 findViewById，并且对 view 进行了缓存，避免了该方法的重复调用。</p>
+<p>那么这些代码是怎么生成的呢？通过谷歌的搜索，笔者找到了该插件的源代码地址（<a href="https://github.com/JetBrains/kotlin/tree/master/plugins/android-extensions" target="_blank" rel="noopener">传送门</a>），然后观察到这个变量和方法命名是固定的，跟具体的类命名无关，猜测是一个固定的常量值，在代码中进行全局搜索，找到以下这个相关类：</p>
+<p>AbstractAndroidExtensionsExpressionCodegenExtension.kt：<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractAndroidExtensionsExpressionCodegenExtension</span> : <span class="type">ExpressionCodegenExtension &#123;</span></span></span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="keyword">val</span> PROPERTY_NAME = <span class="string">"_\$_findViewCache"</span></span><br><span class="line">        <span class="keyword">val</span> CACHED_FIND_VIEW_BY_ID_METHOD_NAME = <span class="string">"_\$_findCachedViewById"</span></span><br><span class="line">        <span class="keyword">val</span> CLEAR_CACHE_METHOD_NAME = <span class="string">"_\$_clearFindViewByIdCache"</span></span><br><span class="line">        <span class="keyword">val</span> ON_DESTROY_METHOD_NAME = <span class="string">"onDestroyView"</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">shouldCacheResource</span><span class="params">(resource: <span class="type">PropertyDescriptor</span>)</span></span> = (resource <span class="keyword">as</span>? AndroidSyntheticProperty)?.shouldBeCached == <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 省略部分代码   </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>再进一步的去搜索，找到类中对应的 generateCacheField() 和 generateCachedFindViewByIdFunction() 方法。</p>
+<p>先看 generateCacheField()：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> SyntheticPartsGenerateContext.<span class="title">generateCacheField</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> cacheImpl = CacheMechanism.getType(containerOptions.getCacheOrDefault(classOrObject))</span><br><span class="line">    classBuilder.newField(JvmDeclarationOrigin.NO_ORIGIN, ACC_PRIVATE, PROPERTY_NAME, cacheImpl.descriptor, <span class="literal">null</span>, <span class="literal">null</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里用到 CacheMechanism 的 getType 方法，然后通过 classBuilder#newField()  生成。</p>
+<p>CacheMechanism#getType()：<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">getType</span><span class="params">(cacheImpl: <span class="type">CacheImplementation</span>)</span></span>: Type &#123;</span><br><span class="line">    <span class="keyword">return</span> Type.getObjectType(<span class="keyword">when</span> (cacheImpl) &#123;</span><br><span class="line">        CacheImplementation.SPARSE_ARRAY -&gt; <span class="string">"android.util.SparseArray"</span></span><br><span class="line">        CacheImplementation.HASH_MAP -&gt; HashMap::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>.<span class="title">canonicalName</span></span></span><br><span class="line">        CacheImplementation.NO_CACHE -&gt; <span class="keyword">throw</span> IllegalArgumentException(<span class="string">"Container should support cache"</span>)</span><br><span class="line">    &#125;.replace(<span class="string">'.'</span>, <span class="string">'/'</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里返回的是 _\$_findViewCache 这个成员变量的类型，默认是 HashMap，也可以在 build.gradle 中指定类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">androidExtensions &#123;</span><br><span class="line">    defaultCacheImplementation = &quot;HASH_MAP&quot; // or SPARSE_ARRAY、NONE</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再看 generateCachedFindViewByIdFunction()：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> SyntheticPartsGenerateContext.<span class="title">generateCachedFindViewByIdFunction</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> containerAsmType = state.typeMapper.mapClass(container)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> viewType = Type.getObjectType(<span class="string">"android/view/View"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> methodVisitor = classBuilder.newMethod(</span><br><span class="line">            JvmDeclarationOrigin.NO_ORIGIN, ACC_PUBLIC, CACHED_FIND_VIEW_BY_ID_METHOD_NAME, <span class="string">"(I)Landroid/view/View;"</span>, <span class="literal">null</span>, <span class="literal">null</span>)</span><br><span class="line">    methodVisitor.visitCode()</span><br><span class="line">    <span class="keyword">val</span> iv = InstructionAdapter(methodVisitor)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> cacheImpl = CacheMechanism.<span class="keyword">get</span>(containerOptions.getCacheOrDefault(classOrObject), iv, containerAsmType)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">loadId</span><span class="params">()</span></span> = iv.load(<span class="number">1</span>, Type.INT_TYPE)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Get cache property</span></span><br><span class="line">    cacheImpl.loadCache()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> lCacheNonNull = Label()</span><br><span class="line">    iv.ifnonnull(lCacheNonNull)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Init cache if null</span></span><br><span class="line">    cacheImpl.initCache()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Get View from cache</span></span><br><span class="line">    iv.visitLabel(lCacheNonNull)</span><br><span class="line">    cacheImpl.loadCache()</span><br><span class="line">    loadId()</span><br><span class="line">    cacheImpl.getViewFromCache()</span><br><span class="line">    iv.checkcast(viewType)</span><br><span class="line">    iv.store(<span class="number">2</span>, viewType)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> lViewNonNull = Label()</span><br><span class="line">    iv.load(<span class="number">2</span>, viewType)</span><br><span class="line">    iv.ifnonnull(lViewNonNull)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Resolve View via findViewById if not in cache</span></span><br><span class="line">    iv.load(<span class="number">0</span>, containerAsmType)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> containerType = containerOptions.containerType</span><br><span class="line">    <span class="keyword">when</span> (containerType) &#123;</span><br><span class="line">        AndroidContainerType.ACTIVITY, AndroidContainerType.ANDROIDX_SUPPORT_FRAGMENT_ACTIVITY, AndroidContainerType.SUPPORT_FRAGMENT_ACTIVITY, AndroidContainerType.VIEW, AndroidContainerType.DIALOG -&gt; &#123;</span><br><span class="line">            loadId()</span><br><span class="line">            iv.invokevirtual(containerType.internalClassName, <span class="string">"findViewById"</span>, <span class="string">"(I)Landroid/view/View;"</span>, <span class="literal">false</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        AndroidContainerType.FRAGMENT, AndroidContainerType.ANDROIDX_SUPPORT_FRAGMENT, AndroidContainerType.SUPPORT_FRAGMENT, LAYOUT_CONTAINER -&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (containerType == LAYOUT_CONTAINER) &#123;</span><br><span class="line">                iv.invokeinterface(containerType.internalClassName, <span class="string">"getContainerView"</span>, <span class="string">"()Landroid/view/View;"</span>)</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                iv.invokevirtual(containerType.internalClassName, <span class="string">"getView"</span>, <span class="string">"()Landroid/view/View;"</span>, <span class="literal">false</span>)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            iv.dup()</span><br><span class="line">            <span class="keyword">val</span> lgetViewNotNull = Label()</span><br><span class="line">            iv.ifnonnull(lgetViewNotNull)</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Return if getView() is null</span></span><br><span class="line">            iv.pop()</span><br><span class="line">            iv.aconst(<span class="literal">null</span>)</span><br><span class="line">            iv.areturn(viewType)</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Else return getView().findViewById(id)</span></span><br><span class="line">            iv.visitLabel(lgetViewNotNull)</span><br><span class="line">            loadId()</span><br><span class="line">            iv.invokevirtual(<span class="string">"android/view/View"</span>, <span class="string">"findViewById"</span>, <span class="string">"(I)Landroid/view/View;"</span>, <span class="literal">false</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> -&gt; <span class="keyword">throw</span> IllegalStateException(<span class="string">"Can't generate code for <span class="variable">$containerType</span>"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    iv.store(<span class="number">2</span>, viewType)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Store resolved View in cache</span></span><br><span class="line">    cacheImpl.loadCache()</span><br><span class="line">    loadId()</span><br><span class="line">    cacheImpl.putViewToCache &#123; iv.load(<span class="number">2</span>, viewType) &#125;</span><br><span class="line"></span><br><span class="line">    iv.visitLabel(lViewNonNull)</span><br><span class="line">    iv.load(<span class="number">2</span>, viewType)</span><br><span class="line">    iv.areturn(viewType)</span><br><span class="line"></span><br><span class="line">    FunctionCodegen.endVisit(methodVisitor, CACHED_FIND_VIEW_BY_ID_METHOD_NAME, classOrObject)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的代码比较复杂，但可以观察到一个重要的地方，它会去判断当前的类是 Activity 还是 Fragment，再去执行对应的寻找控件方法。例如是 Activity 的话，则执行的是 findViewById 方法；而如果是 Fragment，则先执行 getView 方法获取到对应的 rootView，再执行 findViewById。</p>
+<p>还有一个点，最后的实现都会调用到 iv#invokevirtual() 方法，iv 是 InstructionAdapter 类的一个实例。InstructionAdapter 继承于 MethodVisiter，用途是生成方法实现的字节码，这里不再深究实现细节，有兴趣的读者可以再去了解一下。</p>
+<h3 id="四、Kotlin-Android-Extensions-总结"><a href="#四、Kotlin-Android-Extensions-总结" class="headerlink" title="四、Kotlin-Android-Extensions 总结"></a>四、Kotlin-Android-Extensions 总结</h3><p>Kotlin-Android-Extensions 这个插件，通过<strong>自动生成寻找控件代码的字节码，对查找完的控件进行缓存以及 IDE 跳转支持</strong>等方式，使得 Android 的业务开发更加地便捷高效，有效提高研发效率，提升研发体验。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android源码解析/" rel="tag"># Android源码解析</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/1e6d7596.html" rel="next" title="Android 单元测试和 UI 测试初步实践">
+                <i class="fa fa-chevron-left"></i> Android 单元测试和 UI 测试初步实践
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Xu">
+            
+              <p class="site-author-name" itemprop="name">Xu</p>
+              <p class="site-description motion-element" itemprop="description">Tencent / 一个自律的Developer</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/XuDeveloper" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:zhangzhaoxu1215@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/57d6268879bc44005e583e8f" target="_blank" title="掘金">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.jianshu.com/u/5ab00bb2dd06" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/Xu_1215" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://cv.qiaobutang.com/r/5d4fde3a60b27adb07032b9d" target="_blank" title="简历">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简历</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#本文预计阅读时间为-15-20-分钟"><span class="nav-text">本文预计阅读时间为 15-20 分钟</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#一、Kotlin-Android-Extensions-简介"><span class="nav-text">一、Kotlin-Android-Extensions 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、Kotlin-Android-Extensions-使用"><span class="nav-text">二、Kotlin-Android-Extensions 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引入"><span class="nav-text">引入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用"><span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、Kotlin-Android-Extensions-源码分析"><span class="nav-text">三、Kotlin-Android-Extensions 源码分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、Kotlin-Android-Extensions-总结"><span class="nav-text">四、Kotlin-Android-Extensions 总结</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xu</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("cuurqASW68QGjh4eTE0Q2wms-gzGzoHsz", "aD2I7rNsxW6YIQXSpg0aQdyn");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
