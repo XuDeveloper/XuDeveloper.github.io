@@ -97,7 +97,7 @@ deploy:
   branch: master
 
 - type: git
-  repo: git@git.dev.tencent.com:dev_xu/dev_xu.git
+  repo: git@e.coding.net:dev_xu/dev_xu.git
   branch: master
   
 - type: baidu_url_submitter
